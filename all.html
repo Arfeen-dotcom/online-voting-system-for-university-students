@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Voting System | FYP</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="all.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header class="hero">
+    <h1>Online Voting System</h1>
+    <p>University Elections</p>
+    <!--<button onclick="resetAllVotingData()">Reset All Voting Data</button> RESET BUTTON HERE REMOVE COMMENT ONLY-->
+
+</header>
+
+<div class="container">
+    <!-- LOGIN SECTION -->
+    <section class="card" id="loginSection">
+        <h2>🔐 Login</h2>
+        <input type="text" id="studentId" placeholder="Student ID" onkeypress="handleIdKeyPress(event)">
+        <input type="password" id="password" placeholder="Password" onkeypress="handlePasswordKeyPress(event)">
+        <button class="btn" onclick="handleLogin()">Login</button>
+    </section>
+
+    <!-- VOTING SECTION -->
+    <section class="card voting-section" id="votingSection" style="display:none;">
+        <h2>🗳️ Cast Your Vote</h2>
+        <p style="margin-bottom: 25px; opacity: 0.9;">Select your preferred candidate below</p>
+        
+        <div class="voting-options">
+            <label class="vote-option">
+                <input type="radio" name="vote" value="Imran Khan">
+                <div class="candidate-card">
+                    <img src="imran khan.jpg" alt="Imran Khan">
+                    <span class="vote-label">Imran Khan</span>
+                </div>
+            </label>
+            <label class="vote-option">
+                <input type="radio" name="vote" value="Nawaz Sharif">
+                <div class="candidate-card">
+                    <img src="nawaz shareef.jpg" alt="Nawaz Sharif">
+                    <span class="vote-label">Nawaz Sharif</span>
+                </div>
+            </label>
+        </div>
+        
+        <button class="btn submit-btn" onclick="submitVote()">Submit Vote</button>
+    </section>
+
+    <!-- THANK YOU SECTION -->
+    <section class="card" id="thankYouSection" style="display:none; text-align:center;">
+        <h2>✓ Thank You for Voting!</h2>
+        <p>Your vote has been submitted successfully.</p>
+        <p style="font-size: 16px; color: #FFD700; margin-top: 20px;">⏳ Wait 1 second for results...</p>
+    </section>
+
+    <!-- RESULTS SECTION -->
+    <section class="card" id="resultsSection" style="display:none;">
+        <h2>🗳️ Election Results</h2>
+        <div class="results-container">
+            <div class="results-chart-wrapper">
+                <canvas id="resultChart"></canvas>
+            </div>
+            <div class="results-stats">
+                <div class="candidate-result" id="candidate1Result">
+                    <div class="candidate-name">Imran Khan</div>
+                    <div class="vote-count" id="vote1Count">0</div>
+                    <div class="vote-percentage" id="percent1Count">0%</div>
+                    <div class="vote-bar">
+                        <div class="vote-fill" id="fill1"></div>
+                    </div>
+                </div>
+                <div class="candidate-result" id="candidate2Result">
+                    <div class="candidate-name">Nawaz Sharif</div>
+                    <div class="vote-count" id="vote2Count">0</div>
+                    <div class="vote-percentage" id="percent2Count">0%</div>
+                    <div class="vote-bar">
+                        <div class="vote-fill" id="fill2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="total-votes" id="totalVotesDiv">Total Votes: 0</div>
+        <div class="winner-badge" id="winnerBadge" style="display:none;"></div>
+    </section>
+
+    <div class="card grid" id="infoSection">
+        <div>
+            <h2>Students</h2>
+            <div class="student-card">
+                <img src="arfeen mukhtar.jpeg" alt="Arfeen Mukhtar">
+                <div class="student-details">
+                    <p class="student-name">Arfeen Mukhtar</p>
+                    <p class="student-id">F2024376033</p>
+                    <p class="student-program">BS Artificial Intelligence | UMT</p>
+                    <p class="student-semester">3rd Semester</p>
+                    <p class="student-bio">Graphic Designer & Front-End Developer with 2+ years of experience.</p>
+                </div>
+            </div>
+            <div class="student-card">
+                <img src="ghafoor khan.jpeg" alt="Ghafoor Khan">
+                <div class="student-details">
+                    <p class="student-name">Ghafoor Khan</p>
+                    <p class="student-id">F2024376046</p>
+                    <p class="student-program">BS Artificial Intelligence | UMT</p>
+                    <p class="student-semester">3rd Semester</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <h2>Project Advisor</h2>
+            <div class="advisor-card">
+                <img src="prof nadeem.jpg" alt="Prof. Muhammad Nadeem">
+                <div class="advisor-details">
+                    <p class="advisor-name">Prof. Muhammad Nadeem</p>
+                    <p class="advisor-school">School of Systems and Technology</p>
+                    <p class="advisor-dept">Department of Artificial Intelligence</p>
+                    <p class="advisor-email">Email: muhammad.nadeem@umt.edu.pk</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    School of Systems & Technology <br>
+    University of Management and Technology, Lahore
+</footer>
+
+<script src="all.js"></script>
+</body>
+</html>
